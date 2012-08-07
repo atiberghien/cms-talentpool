@@ -76,12 +76,12 @@ class TalentPeople(models.Model):
     post = models.CharField(_('post'), max_length=200)
 
     quote = models.TextField(_("quote"))
-    description = models.TextField(_("description"))
+    description = models.TextField(_("description"), blank=True)
     
-    cv_domain = models.TextField(_("experience domain"))
-    cv_experiences = models.TextField(_("experiences"))
-    cv_studies = models.TextField(_("studies"))
-    cv_references = models.TextField(_("references"))
+    cv_domain = models.TextField(_("experience domain"), blank=True)
+    cv_experiences = models.TextField(_("experiences"), blank=True)
+    cv_studies = models.TextField(_("studies"), blank=True)
+    cv_references = models.TextField(_("references"), blank=True)
     
     def __unicode__(self):
         return self.get_full_name()
