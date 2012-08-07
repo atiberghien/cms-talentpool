@@ -13,12 +13,12 @@ p {
     margin: 0 auto;
 }
 
-.sidebar-left {
+.talentpool-sidebar {
     width:30%; 
     float:left;
 }
 
-.main-content {
+.talentpool-content {
     width:70%; 
     float:right;
 }

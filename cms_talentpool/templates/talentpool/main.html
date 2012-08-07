@@ -2,7 +2,7 @@
 {%load i18n%}
 {% block content %}
 
-    <div class="sidebar-left">
+    <div class="talentpool-sidebar">
         <form id="skill-choice-form" action="{% url show_talent_pool %}" method="post">{% csrf_token %}
         <ul id="skill-categories">
             {% for categ in categories %}
@@ -19,7 +19,7 @@
         </form>
     </div>
     
-    <div class="main-content">
+    <div class="talentpool-content">
         {% include "talentpool/talent-main-mosaic.html"%}
         <div class="clear"></div>
         <div id="embedded-talent">
