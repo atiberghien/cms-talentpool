@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{%load i18n %}
+
+{% block content %}
+    <div id="talent">
+    <div class="sidebar-left">
+        <img src="{{talent.photo.url}}" alt="{{talent.get_full_name}}"/>
+        <div class="clear"></div>
+        {% include "talentpool/talent-main-mosaic.html" with people=connections %}
+    </div>
+    <div class="main-content">
+        <div class="quote"><p>{{talent.quote}}</p></div>
+        <div class="cv">
+            <div style="width: 50%; float: left;">
+                <div>
+                <h4>{% trans 'experience domain'%}</h4>
+                <p>{{talent.cv_domain}}</p>
+                </div>
+                <div>
+                <h4>{% trans 'experiences'%}</h4>
+                <p>{{talent.cv_experiences}}</p>
+                </div>
+            </div>
+            <div style="width: 50%; float: right;">
+                <div>
+                <h4>{% trans 'studies'%}</h4>
+                <p>{{talent.cv_studies}}</p>
+                </div>
+                <div>
+                <h4>{% trans 'references'%}</h4>
+                <p>{{talent.cv_references}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

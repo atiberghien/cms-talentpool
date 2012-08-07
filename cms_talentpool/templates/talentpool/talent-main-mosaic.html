@@ -1,0 +1,9 @@
+<ul id="main-people-mosaic">
+{% for p in people %}
+    <li>
+    <a class="display-talent" href="{% url show_talent p.full_name_slug %}" title="{{p.get_full_name}}">
+        <img class="talent-small-photo" src="{{p.photo.url}}" alt="{{p.get_full_name}}" />
+    </a>
+    </li>
+{% endfor %}
+</ul>

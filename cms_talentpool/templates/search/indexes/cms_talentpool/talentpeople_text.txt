@@ -1,0 +1,8 @@
+{{object.first_name}}
+{{object.last_name}}
+{{object.quote}}
+{{object.description}}
+{{object.cv_domain}}
+{{object.cv_experiences}
+{{object.cv_studies}}
+{{object.cv_references}}

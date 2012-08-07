@@ -1,0 +1,3 @@
+include AUTHORS
+recursive-include cms_talentpool/templates *
+recursive-include cms_talentpool/static *

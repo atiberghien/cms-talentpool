@@ -1,0 +1,3 @@
+{% load i18n cms_search_tags highlight %}
+<a href="{% url show_talent result.object.full_name_slug %}">[{% trans 'talent people'%}] {{ result.object.get_full_name|title }}</a><br />
+{% highlight result.text with request.GET.q %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{%load i18n%}
+{% block content %}
+
+    <div class="sidebar-left">
+        <form id="skill-choice-form" action="{% url show_talent_pool %}" method="post">{% csrf_token %}
+        <ul id="skill-categories">
+            {% for categ in categories %}
+            <li>
+                <input type="checkbox" name="skills" value="{{categ.id}}" {%if categ.id in selected_skills%}checked="checked"{%endif%}>{{categ}}
+            </li>
+            {% endfor%}
+        </ul>
+        <input type="submit" value="{% trans 'filter'|capfirst%}"/>
+        </form>
+        <form id="talent-search-form" action="{% url show_talent_pool %}" method="get">
+            <input type="text" name='q' />
+            <input type="submit" value="=>"/>
+        </form>
+    </div>
+    
+    <div class="main-content">
+        {% include "talentpool/talent-main-mosaic.html"%}
+        <div class="clear"></div>
+        <div id="embedded-talent">
+        </div>
+    </div>
+
+{% endblock %}

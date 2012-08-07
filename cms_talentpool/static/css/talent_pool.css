@@ -1,0 +1,43 @@
+div.clear {
+    clear: both;
+    visibility: hidden;
+    display: none;
+}
+
+p {
+    word-wrap: break-word;
+}
+
+#main {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.sidebar-left {
+    width:30%; 
+    float:left;
+}
+
+.main-content {
+    width:70%; 
+    float:right;
+}
+
+#skill-categories {
+    list-style: none;
+    padding: 0;
+}
+
+#main-people-mosaic ul{
+    list-style: none;
+}
+
+#main-people-mosaic li {
+    display: block;
+    float: left;
+}
+
+.talent-small-photo {
+    height : 75px;
+     width : 50px;
+}
