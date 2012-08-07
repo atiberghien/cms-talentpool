@@ -2,10 +2,9 @@ from django.db import models
 from django.utils.translation import ugettext as _
 from autoslug import AutoSlugField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import SmartResize
 from PIL import ImageOps
 from django.template.defaultfilters import slugify
-from django.core.urlresolvers import reverse
 
 class string_with_title(str):
     def __new__(cls, value, title):
@@ -32,7 +31,7 @@ def people_photo_upload_path(instance, filename):
 class Company(models.Model):
     name = models.CharField(_('label'), max_length=200)
     original_logo = models.ImageField(upload_to=company_logo_upload_path)
-    logo = ImageSpecField([ResizeToFit(100, 50)], 
+    logo = ImageSpecField([SmartResize(190, 230)], 
                           image_field='original_logo',
                           format='png')
     
@@ -67,7 +66,7 @@ class TalentPeople(models.Model):
     email = models.EmailField(_('e-mail address'), blank=True)
     
     original_photo = models.ImageField(upload_to=people_photo_upload_path)
-    photo = ImageSpecField([ResizeToFit(190, 220), BlackAndWhite()], 
+    photo = ImageSpecField([SmartResize(190, 230), BlackAndWhite()], 
                             image_field='original_photo',
                             format='png')
     
