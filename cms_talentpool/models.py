@@ -77,7 +77,7 @@ class TalentPeople(models.Model):
     post = models.CharField(_('post'), max_length=200)
 
     quote = models.TextField(_("quote"))
-    description = models.TextField(_("references"))
+    description = models.TextField(_("description"))
     
     cv_domain = models.TextField(_("experience domain"))
     cv_experiences = models.TextField(_("experiences"))
