@@ -3,12 +3,12 @@
 
 {% block content %}
     <div id="talent">
-    <div class="sidebar-left">
+    <div class="talent-sidebar">
         <img src="{{talent.photo.url}}" alt="{{talent.get_full_name}}"/>
         <div class="clear"></div>
         {% include "talentpool/talent-main-mosaic.html" with people=connections %}
     </div>
-    <div class="main-content">
+    <div class="talent-content">
         <div class="quote"><p>{{talent.quote}}</p></div>
         <div class="cv">
             <div style="width: 50%; float: left;">

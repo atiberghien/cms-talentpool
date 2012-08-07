@@ -7,9 +7,16 @@
 <script src="{{ STATIC_URL }}js/jquery/jquery.form.js"></script>
 <script src="{{ STATIC_URL }}js/talent_pool.js"></script>
 
+<style type="text/css">
+div.clear {
+    clear: both;
+    visibility: hidden;
+    display: none;
+}
+</style>
 </head>
 <body>
-<div id="main">
+<div id="main" style="width: 1024px; margin: 0 auto;">
 {% block content %}
 {% endblock %}
 </div>

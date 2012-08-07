@@ -1,26 +1,15 @@
-div.clear {
-    clear: both;
-    visibility: hidden;
-    display: none;
-}
-
-p {
-    word-wrap: break-word;
-}
-
-#main {
-    width: 1024px;
-    margin: 0 auto;
-}
-
-.talentpool-sidebar {
+.talentpool-sidebar, .talent-sidebar {
     width:30%; 
     float:left;
 }
 
-.talentpool-content {
+.talentpool-content, .talent-content {
     width:70%; 
     float:right;
+}
+
+.talentpool-content p {
+    word-wrap: break-word;
 }
 
 #skill-categories {
@@ -28,11 +17,11 @@ p {
     padding: 0;
 }
 
-#main-people-mosaic ul{
+#main-people-mosaic ul, #people-mosaic-widget ul{
     list-style: none;
 }
 
-#main-people-mosaic li {
+#main-people-mosaic li, #people-mosaic-widget li{
     display: block;
     float: left;
 }
