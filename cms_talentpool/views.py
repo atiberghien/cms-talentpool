@@ -12,7 +12,7 @@ def show_talent_pool(request):
     if request.is_ajax():
         template_name = "talentpool/talent-main-mosaic.html"
     
-    if request.method == "POST":
+    if request.method == "POST" and request.POST.getlist("skills"):
         selected_skills = [int(x) for x in request.POST.getlist("skills")]
         people = people.filter(skills__in=selected_skills)
         
