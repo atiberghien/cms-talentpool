@@ -5,7 +5,7 @@ from haystack.forms import ModelSearchForm
 
 def show_talent_pool(request):
     categories = SkillCategory.objects.all()
-    selected_skills = categories.values_list('id', flat=True)
+    selected_skills = []
     people = TalentPeople.objects.all()
     
     template_name = "talentpool/main.html"
