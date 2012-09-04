@@ -5,6 +5,7 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import SmartResize
 from PIL import ImageOps
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 
 class string_with_title(str):
     def __new__(cls, value, title):
@@ -88,6 +89,9 @@ class TalentPeople(models.Model):
     
     def get_full_name(self):
         return u'%s %s' % (self.first_name, self.last_name)
+    
+    def get_absolute_url(self):
+        return reverse("show_talent", args=[self.full_name_slug])
     
     class Meta:
         verbose_name = _("talent people")
