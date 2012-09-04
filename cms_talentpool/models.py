@@ -66,7 +66,7 @@ class TalentPeople(models.Model):
     email = models.EmailField(_('e-mail address'), blank=True)
     
     original_photo = models.ImageField(upload_to=people_photo_upload_path)
-    photo = ImageSpecField([SmartResize(190, 230), BlackAndWhite()], 
+    photo = ImageSpecField([SmartResize(190, 230)], 
                             image_field='original_photo',
                             format='png')
     
