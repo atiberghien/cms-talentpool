@@ -3,6 +3,6 @@
 {{object.quote}}
 {{object.description}}
 {{object.cv_domain}}
-{{object.cv_experiences}
+{{object.cv_experiences}}
 {{object.cv_studies}}
 {{object.cv_references}}
