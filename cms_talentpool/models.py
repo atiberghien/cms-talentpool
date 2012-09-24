@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from autoslug import AutoSlugField
 from imagekit.models import ImageSpecField
-from imagekit.processors import SmartResize
+from imagekit.processors import SmartResize, ResizeToFit
 from PIL import ImageOps
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
@@ -67,7 +67,7 @@ class TalentPeople(models.Model):
     email = models.EmailField(_('e-mail address'), blank=True)
     
     original_photo = models.ImageField(upload_to=people_photo_upload_path)
-    photo = ImageSpecField([SmartResize(190, 230)], 
+    photo = ImageSpecField([ResizeToFit(190, 230)], 
                             image_field='original_photo',
                             format='png')
     
