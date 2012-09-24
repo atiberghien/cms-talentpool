@@ -24,7 +24,7 @@ def show_talent_pool(request):
         selected_skills = []
     
     return render_to_response(template_name,
-                              {'people' : people,
+                              {'people' : people.distinct(),
                                'categories' : categories,
                                'selected_skills' : selected_skills},
                               context_instance=RequestContext(request))
