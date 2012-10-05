@@ -2,10 +2,13 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from autoslug import AutoSlugField
 from imagekit.models import ImageSpecField
-from imagekit.processors import SmartResize, ResizeToFit
+from imagekit.processors.resize import Resize, ResizeToCover
+from imagekit.processors.crop import Crop
+from imagekit.processors.base import Anchor
 from PIL import ImageOps
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
+from django.conf import settings
 
 class string_with_title(str):
     def __new__(cls, value, title):
@@ -18,6 +21,21 @@ class string_with_title(str):
 
     __copy__ = lambda self: self
     __deepcopy__ = lambda self, memodict: self
+
+
+class CustomResize(object):
+    
+    def __init__(self, width, height):
+        self.width, self.height = width, height
+
+    def process(self, img):
+        original_width, original_height = img.size
+        ratio = max(float(self.width) / original_width,
+                float(self.height) / original_height)
+        new_width, new_height = (int(original_width * ratio),
+                int(original_height * ratio))
+        new_img =  Resize(new_width, new_height).process(img)
+        return Crop(self.width, self.height, anchor=Anchor.TOP).process(new_img)
 
 class BlackAndWhite(object):
     def process(self, img):
@@ -32,7 +50,7 @@ def people_photo_upload_path(instance, filename):
 class Company(models.Model):
     name = models.CharField(_('label'), max_length=200)
     original_logo = models.ImageField(upload_to=company_logo_upload_path)
-    logo = ImageSpecField([SmartResize(190, 230)], 
+    logo = ImageSpecField([ResizeToCover(*settings.CIE_LOGO_THUMB_SIZE)], 
                           image_field='original_logo',
                           format='png')
     
@@ -67,7 +85,7 @@ class TalentPeople(models.Model):
     email = models.EmailField(_('e-mail address'), blank=True)
     
     original_photo = models.ImageField(upload_to=people_photo_upload_path)
-    photo = ImageSpecField([ResizeToFit(190, 230)], 
+    photo = ImageSpecField([CustomResize(*settings.TALENT_PHOTO_THUMB_SIZE)], 
                             image_field='original_photo',
                             format='png')
     
