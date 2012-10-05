@@ -8,6 +8,7 @@ $(document).ready(function() {
 		elmt.click(function(){
 	        $('#embedded-talent').load($(this).attr('href')+ " #talent", function(){
 	        	activateEmbeddedDisplay($("#embedded-talent #talent a.display-talent"));
+	        	$('html,body').animate({scrollTop: $("#talent").offset().top}, 'slow');
 	        });
 	        return false;
 	    });
