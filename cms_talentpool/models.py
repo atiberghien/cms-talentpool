@@ -9,6 +9,8 @@ from PIL import ImageOps
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from ckeditor.fields import RichTextField
+
 
 class string_with_title(str):
     def __new__(cls, value, title):
@@ -97,10 +99,10 @@ class TalentPeople(models.Model):
     quote = models.TextField(_("quote"))
     description = models.TextField(_("description"), blank=True)
     
-    cv_domain = models.TextField(_("experience domain"), blank=True)
-    cv_experiences = models.TextField(_("experiences"), blank=True)
-    cv_studies = models.TextField(_("studies"), blank=True)
-    cv_references = models.TextField(_("references"), blank=True)
+    cv_domain = RichTextField(blank=True, config_name='talentpool_ckeditor')
+    cv_experiences = RichTextField(blank=True, config_name='talentpool_ckeditor')
+    cv_studies = RichTextField(blank=True, config_name='talentpool_ckeditor')
+    cv_references = RichTextField(blank=True, config_name='talentpool_ckeditor')
     
     def __unicode__(self):
         return self.get_full_name()

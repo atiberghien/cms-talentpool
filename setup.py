@@ -13,6 +13,7 @@ setup(
         'django-autoslug',
         'pillow',
         'django-imagekit',
+	'django-ckeditor',
     ],
     keywords='django cms skills talent pool',
     classifiers=[
